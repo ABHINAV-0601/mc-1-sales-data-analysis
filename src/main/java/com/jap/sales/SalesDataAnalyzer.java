@@ -40,27 +40,13 @@ public class SalesDataAnalyzer {
     }
 
     public List<SalesRecord> getAllCustomersSortedByPurchaseAmount(List<SalesRecord> salesData){
-        salesData.sort(((o1, o2) -> {
-            if(o1.getAmount() == o2.getAmount()){
-                return 0;
-            }
-            if(o1.getAmount() > o2.getAmount()){
-                return -1;
-            }
-            else{return 1;}
-        }));
+        salesData.sort(((o1, o2) -> (int)(o2.getAmount() - o1.getAmount())));
+
        return salesData;
     }
     public SalesRecord getTopCustomerWhoSpentMaxTimeOnSite(List<SalesRecord> salesData){
-        salesData.sort(((o1, o2) -> {
-            if(o1.getTime_on_site() == o2.getTime_on_site()){
-                return 0;
-            }
-            if(o1.getTime_on_site() > o2.getTime_on_site()){
-                return -1;
-            }
-            else{return 1;}
-        }));
+        salesData.sort(((o1, o2) -> (int) (o2.getTime_on_site() - o1.getTime_on_site())));
+
        return salesData.get(0);
     }
 }
